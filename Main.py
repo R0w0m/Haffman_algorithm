@@ -7,8 +7,6 @@ def analysis(str):
     return dict_
 
 
-
-
 def get_min(dict_):
     min_ = [None, None]
     val_ = [None, None]
