@@ -26,17 +26,15 @@ def get_min(dict_):
 
 
 def create_codes(tree_):
-    print(tree_)
     codes = {}
     def get_code(d, code):
-        bit = 0
         for i in d:
             if "node" in i:
-                for j in d[i][1]:
-                    get_code(d[i][1], (code+bit))
+                    get_code(d[i][1][0], (code+"0"))
+                    get_code(d[i][1][1], (code+"1"))
             else:
-                codes[i] = int(str(code)[1:])
-    get_code(tree_, 0)
+                codes[i] = int(code)
+    get_code(tree_, "")
     return codes
 
 def main():
@@ -54,7 +52,8 @@ def main():
         del all_nodes[min_[0]]
         del all_nodes[min_[1]]
         nd_num += 1
-    print(create_codes(all_nodes))
+    codes = create_codes(all_nodes)
+    print("\n".join(f"{i}  {codes[i]}" for i in codes))
 
 if __name__ == "__main__":
     main()
