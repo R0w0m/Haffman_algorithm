@@ -25,21 +25,18 @@ def get_min(dict_):
 
 
 
-def create_codes(dict_):
-    print(dict_)
+def create_codes(tree_):
+    print(tree_)
     codes = {}
     def get_code(d, code):
         bit = 0
         for i in d:
-            print(i, "node" in i)
             if "node" in i:
-                print(i)
-                get_code(i, (code + bit))# в каждом списке один ключ, поэтому надо искать по зачению[1][i]
-                bit+=1
+                for j in d[i][1]:
+                    get_code(d[i][1], (code+bit))
             else:
-                print("code: ", code)
                 codes[i] = int(str(code)[1:])
-    get_code(dict_, 0)
+    get_code(tree_, 0)
     return codes
 
 def main():
@@ -63,4 +60,4 @@ if __name__ == "__main__":
     main()
 
 
-
+{'node4': [21, [{'node2': [9, [{'node0': [3, [{'1': [1]}, {'2': [2]}]]}, {'6': [6]}]]}, {'node3': [12, [{'5': [5]}, {'node1': [7, [{'3': [3]}, {'4': [4]}]]}]]}]]}
