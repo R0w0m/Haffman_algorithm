@@ -53,10 +53,11 @@ def main():
         del all_nodes[min_[1]]
         nd_num += 1
     codes = create_codes(all_nodes)
+    print(all_nodes, end = "\n\n")
     print("\n".join(f"{i}  {codes[i]}" for i in codes))
 
 if __name__ == "__main__":
     main()
 
 
-{'node4': [21, [{'node2': [9, [{'node0': [3, [{'1': [1]}, {'2': [2]}]]}, {'6': [6]}]]}, {'node3': [12, [{'5': [5]}, {'node1': [7, [{'3': [3]}, {'4': [4]}]]}]]}]]}
+
