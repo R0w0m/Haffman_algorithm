@@ -10,17 +10,45 @@ def analysis(str):
 def get_min(dict_):
     min_ = [None, None]
     val_ = [None, None]
-    fst = 0
+
     for i in dict_:
-        if min_[fst]:
-            if min_[fst] > dict_[i][0]:
-                min_[fst] = dict_[i][0]
-                val_[fst] = i
-                fst = 0 if fst else 1
+        if min_[0]:
+            if min_[0] >= dict_[i][0]:
+                min_[0] = dict_[i][0]
+                val_[0] = i
         else:
-            min_[fst] = dict_[i][0]
-            val_[fst] = i
-            fst = 0 if fst else 1
+            min_[0] = dict_[i][0]
+            val_[0] = i
+
+
+    for i in dict_:
+        if not i == val_[0]:
+            if min_[1]:
+                if min_[1] >= dict_[i][0]:
+                    min_[1] = dict_[i][0]
+                    val_[1] = i
+            else:
+                min_[1] = dict_[i][0]
+                val_[1] = i
+
+    '''
+    for i in dict_:
+        if not min_[0]:
+            if not min_[1]:
+                min_[1] = dict_[i]
+                val_[1] = i
+                continue
+            min_[0] = dict_[i]
+            val_[0] = i
+        else:
+            if min_[1] >= dict_[i]:
+                min_[1] = dict_[i]
+                val_[1] = i
+                continue
+            if min_[0] >= dict_[i]:
+                min_[0] = dict_[i]
+                val_[0] = i
+    '''
     return val_
 
 
@@ -33,7 +61,7 @@ def create_codes(tree_):
                     get_code(d[i][1][0], (code+"0"))
                     get_code(d[i][1][1], (code+"1"))
             else:
-                codes[i] = int(code)
+                codes[i] = code
     get_code(tree_, "")
     return codes
 
@@ -46,8 +74,8 @@ def main():
     while len(all_nodes) > 1:
         min_ = get_min(all_nodes)
         node_val = (all_nodes[min_[0]][0] + all_nodes[min_[1]][0])
-        d1 = {min_[0]:all_nodes[min_[0]]} # dought node 1
-        d2 = {min_[1]:all_nodes[min_[1]]} # dought node 2
+        d1 = {min_[0]:all_nodes[min_[0]]} # daughter node 1
+        d2 = {min_[1]:all_nodes[min_[1]]} # daughter node 2
         all_nodes[f"node{nd_num}"] = [node_val, [d1, d2]]
         del all_nodes[min_[0]]
         del all_nodes[min_[1]]
@@ -60,4 +88,28 @@ if __name__ == "__main__":
     main()
 
 
+'''
+{'node6': [11, [
+    {'node4': [4, [
+        {'node2': [2, [
+            {'r': [1]},
+            {'d': [1]}]]},
+        {'node1': [2, [
+            {' ': [1]},
+            {'w': [1]}]]}]]},
+    {'node5': [7, [
+        {'l': [3]},
+        {'node3': [4, [
+            {'node0': [2, [
+                {'h': [1]},
+                {'e': [1]}]]},
+            {'o': [2]}]]}]]}]]}]
 
+{'node2': [85, [
+    {'node0': [2, [
+        {'q': [1]},
+        {'w': [1]}]]},
+    {'node1': [83, [
+        {'e': [1]},
+        {'r': [82]}]]}]]}
+'''
