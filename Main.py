@@ -65,8 +65,14 @@ def create_codes(tree_):
     get_code(tree_, "")
     return codes
 
+
+def encode_str(str_, codes):
+    return "".join([codes[i] for i in str_])
+
+
 def main():
-    symbol = analysis(input()) # symbol: [num]
+    text_line = input()
+    symbol = analysis(text_line) # symbol: [num]
     #bin_tree = {} # symbol: [num, [douther_1, douther_2]]
 
     all_nodes = dict(symbol)
@@ -83,6 +89,7 @@ def main():
     codes = create_codes(all_nodes)
     print(all_nodes, end = "\n\n")
     print("\n".join(f"{i}  {codes[i]}" for i in codes))
+    print(encode_str(text_line, codes))
 
 if __name__ == "__main__":
     main()
