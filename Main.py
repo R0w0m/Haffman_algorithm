@@ -19,11 +19,11 @@ def get_min(dict_):
             min_[0] = dict_[i][0]
             val_[0] = i
         else:
-            if  min_[0] > dict_[i][0]
-            min_[1] = min_[0]
-            min_[0] = dict_[i][0]
-            val_[1] = val_[0]
-            val_[0] = i
+            if  min_[0] > dict_[i][0]:
+                min_[1] = min_[0]
+                min_[0] = dict_[i][0]
+                val_[1] = val_[0]
+                val_[0] = i
 '''    fst = 0
 
     for i in dict_:
@@ -41,7 +41,7 @@ def get_min(dict_):
 def make_codes(tree):
     codes={}
     for i in tree:
-        tree[i][2] = 
+        tree[i][2] = None
 
 def main():
     symbol = analysis(input()) # symbol: [num]
