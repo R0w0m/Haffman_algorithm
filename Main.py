@@ -16,6 +16,7 @@ def get_min(dict_):
             if min_[0] >= dict_[i][0]:
                 min_[0] = dict_[i][0]
                 val_[0] = i
+
         else:
             min_[0] = dict_[i][0]
             val_[0] = i
