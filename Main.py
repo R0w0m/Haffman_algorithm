@@ -29,25 +29,6 @@ def get_min(dict_):
             else:
                 min_[1] = dict_[i][0]
                 val_[1] = i
-
-    '''
-    for i in dict_:
-        if not min_[0]:
-            if not min_[1]:
-                min_[1] = dict_[i]
-                val_[1] = i
-                continue
-            min_[0] = dict_[i]
-            val_[0] = i
-        else:
-            if min_[1] >= dict_[i]:
-                min_[1] = dict_[i]
-                val_[1] = i
-                continue
-            if min_[0] >= dict_[i]:
-                min_[0] = dict_[i]
-                val_[0] = i
-    '''
     return val_
 
 
@@ -62,22 +43,22 @@ def create_codes(tree_):
             else:
                 codes[i] = code
     get_code(tree_, "")
-    return codes, tree
+    return codes
 
 
 def encode_str(str_, codes):
-    sourse_text
+    sourse_text = ""
     while(str_ != ""):
         x = 0
         for i in range(len(str_)):
             if str_[:i] in codes:
                 x = i
                 break
-        sourse_text += codes[str_[:x]]
+        if str_[:x]:
+            sourse_text += str(codes[int(str_[:x])])
         str_ = str_[x:]
 
     return sourse_text
-    
 
 
 def main():
@@ -98,6 +79,9 @@ def main():
         nd_num += 1
     codes = create_codes(all_nodes)
     print(all_nodes, end = "\n\n")
+
+    while True:
+        exec(input("$ "))
     print("\n".join(f"{i}  {codes[i]}" for i in codes))
     print(encode_str(text_line, codes))
 
