@@ -62,11 +62,22 @@ def create_codes(tree_):
             else:
                 codes[i] = code
     get_code(tree_, "")
-    return codes
+    return codes, tree
 
 
 def encode_str(str_, codes):
-    return "".join([codes[i] for i in str_])
+    sourse_text
+    while(str_ != ""):
+        x = 0
+        for i in range(len(str_)):
+            if str_[:i] in codes:
+                x = i
+                break
+        sourse_text += codes[str_[:x]]
+        str_ = str_[x:]
+
+    return sourse_text
+    
 
 
 def main():
