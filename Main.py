@@ -80,8 +80,8 @@ def main():
     codes = create_codes(all_nodes)
     print(all_nodes, end = "\n\n")
 
-    while True:
-        exec(input("$ "))
+    #while True:
+    #    exec(input("$ "))
     print("\n".join(f"{i}  {codes[i]}" for i in codes))
     print(encode_str(text_line, codes))
 
